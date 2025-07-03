@@ -1,40 +1,63 @@
-<!-- نسخة معدلة جاهزة للاستخدام -->
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
-    <title>بورتفوليو أحمد علي</title>
-    <style>
-        body { font-family: Tahoma; direction: rtl; text-align: center; background: #f0f8ff; }
-        .section { background: white; margin: 20px auto; padding: 20px; width: 80%; box-shadow: 0 0 10px #ccc; }
-        img, iframe { max-width: 90%; display: block; margin: 10px auto; }
-        h1 { color: #2c3e50; }
-        a { color: #3498db; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بورتفوليو [اسمك] | مبرمج C#/C++ ومهندس ميكاترونيكس</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- خطوط جميلة من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>أحمد علي</h1>
-    <p>مهندسadsfasdfasdfasdfasdfasdfميكاترونيكس | مبرمج C++/C# | قاعدة بيانات SQL</p>
-    
-    <div class="section">
-        <h2>🌐 مشاريع البرمجة</h2>
-        <h3>نظام إدارة الموظفين (C# + SQL Server)</h3>
-        <img src="employee-system.jpg" alt="واجهة النظام">
-        <p>واجهة رسومية لإدارة بيانات الموظفين وتخزينها بقاعدة بيانات</p>
-        <a href="https://github.com/ahmed-ali/Employee-Management">👉 انقر هنا لرؤية الكود</a>
-    </div>
-    
-    <div class="section">
-        <h2>🤖 مشاريع الميكاترونيكس</h2>
-        <h3>سيارة تعقب خط (Line Tracking Car)</h3>
-        <iframe width="400" height="225" src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
-        <p>تمت برمجتها بلغة C++ على Arduino</p>
-    </div>
-    
-    <div class="section">
-        <h2>🎓 الشهادات</h2>
-        <a href="sql-certificate.pdf">Microsoft SQL Server Certified</a><br>
-        <a href="cpp-certificate.jpg">C++ Advanced Programming (Udemy)</a>
-    </div>
+    <!-- شريط التنقل -->
+    <nav>
+        <ul>
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#programming">البرمجة</a></li>
+            <li><a href="#mecatronics">الميكاترونيكس</a></li>
+            <li><a href="#certificates">الشهادات</a></li>
+        </ul>
+    </nav>
+
+    <!-- الصفحة الرئيسية -->
+    <section id="home">
+        <h1>مرحبًا، أنا <span class="highlight">[اسمك]</span></h1>
+        <p>مهندس ميكاترونيكس ومبرمج متخصص في #C و++C وقواعد البيانات.</p>
+    </section>
+
+    <!-- قسم البرمجة -->
+    <section id="programming">
+        <h2>مشاريعي البرمجية</h2>
+        <div class="project">
+            <h3>نظام إدارة الموظفين (C# + SQL Server)</h3>
+            <img src="assets/images/Sherif.jpg" alt="صورة المشروع">
+            <p>واجهة رسومية متكاملة مع قاعدة بيانات.</p>
+            <a href="https://github.com/yourusername/project1" class="btn">عرض الكود</a>
+        </div>
+    </section>
+
+    <!-- قسم الميكاترونيكس -->
+    <section id="mecatronics">
+        <h2>مشاريع الميكاترونيكس</h2>
+        <div class="project">
+            <h3>الذراع الروبوتي</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/yourvideo" frameborder="0"></iframe>
+            <p>تمت برمجته بـ C++ على Arduino.</p>
+        </div>
+    </section>
+
+    <!-- قسم الشهادات -->
+    <section id="certificates">
+        <h2>الشهادات</h2>
+        <div class="certificate">
+            <h3>شهادة SQL Server من Microsoft</h3>
+            <a href="assets/certificates/A.pdf" class="btn">عرض الشهادة</a>
+        </div>
+    </section>
+
+    <!-- تذييل الصفحة -->
+    <footer>
+        <p>تواصل معي: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
+    </footer>
 </body>
 </html>
