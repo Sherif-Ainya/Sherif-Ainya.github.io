@@ -1,46 +1,154 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بورتفوليو 3D | [اسمك]</title>
+    <title>My Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- المشهد 3D (خلفية) -->
-    <div id="3d-scene"></div>
+    <header>
+        <nav>
+            <div class="logo">Sherif's Portfolio :-)</div>
+            <div class="hamburger" id="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="programming.html">Programming</a></li>
+                <li><a href="mechatronics.html">Mechatronics</a></li>
+                <li><a href="other.html">Other Skills</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- شريط التنقل -->
-    <nav>
-        <ul>
-            <li><a href="#/" data-page="home">الرئيسية</a></li>
-            <li><a href="#/projects" data-page="projects">المشاريع</a></li>
-            <li><a href="#/contact" data-page="contact">تواصل</a></li>
-        </ul>
-    </nav>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="profile-container">
+                    <img src="images/profile.jpg" alt="My Photo" class="profile-img">
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="hero-text">
+                    <h1>Hi, I'm <span class="name-highlight">Sherif Ainya</span></h1>
+                    <h2>😊</h2>
+                    <p>Welcome to my portfolio website. I'm passionate about programming, mechatronics, and continuous learning. Here you'll find my certifications, projects, and skills.</p>
+                    <div class="cta-buttons">
+                        <a href="#about" class="btn">Learn More</a>
+                        <a href="#contact" class="btn btn-outline">Contact Me</a>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-down">
+                <span>Scroll Down</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
 
-    <!-- الصفحات (تظهر حسب الرابط) -->
-    <div id="app">
-        <div class="page" id="home-page">
-            <h1>مرحبًا، أنا <span class="name-3d">[اسمك]</span></h1>
-            <p>مطور #C / C++ | مهندس ميكاترونيكس</p>
+        <section id="about" class="about-section">
+            <h2>About Me :</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a dedicated professional with expertise in multiple areas. My journey began with a passion for technology and has evolved into a diverse skill set.</p>
+                    <p>With certifications in programming, mechatronics projects, and language skills, I bring a unique combination of technical and analytical abilities to every challenge.</p>
+                    <div class="skills">
+                        <h3>Key Skills :</h3>
+                        <ul>
+                            <li>Programming Languages</li>
+                            <li>Mechatronics Design</li>
+                            <li>Problem Solving</li>
+                            <li>Technical Documentation</li>
+                            <li>Project Management</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2015-2018</div>
+                        <div class="timeline-content">
+                            <h3>Education</h3>
+                            <p>Degree or certification information</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2018-2020</div>
+                        <div class="timeline-content">
+                            <h3>First Professional Experience</h3>
+                            <p>Details about your early career</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2020-Present</div>
+                        <div class="timeline-content">
+                            <h3>Current Position</h3>
+                            <p>What you're doing now</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2>Get In Touch :</h2>
+            <form id="contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>sherif.3inya@gmail.com</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+963 939 259 662</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Damascus, Syria</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">My Portfolio 💕</div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="programming.html">Programming</a>
+                <a href="mechatronics.html">Mechatronics</a>
+                <a href="other.html">Other Skills</a>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="https://t.me/Sherif_Ainya"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
         </div>
-
-        <div class="page" id="projects-page">
-            <h2>مشاريعي البرمجية</h2>
-            <div class="project-card" data-project="1">مشروع #1</div>
-            <div class="project-card" data-project="2">مشروع #2</div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Sherif Ainya's Portfolio. All rights reserved.</p>
         </div>
-
-        <div class="page" id="contact-page">
-            <h2>تواصل معي</h2>
-            <form>...</form>
-        </div>
-    </div>
+    </footer>
 
     <script src="js/main.js"></script>
-    <script src="js/router.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/mobile.js"></script>
 </body>
 </html>

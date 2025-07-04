@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechatronics Project | My Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mechatronics.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">MyPortfolio</div>
+            <div class="hamburger" id="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="programming.html">Programming</a></li>
+                <li><a href="mechatronics.html" class="active">Mechatronics</a></li>
+                <li><a href="other.html">Other Skills</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="project-hero">
+            <h1>Mechatronics Project</h1>
+            <p>Detailed showcase of my mechatronics engineering project</p>
+        </section>
+
+        <section class="project-showcase">
+            <div class="project-main">
+                <div class="project-image">
+                    <img src="images/project1.jpg" alt="Mechatronics Project">
+                    <div class="project-links">
+                        <a href="documents/mechatronics.pdf" class="btn" download>Download PDF</a>
+                        <a href="#" class="btn btn-outline">View Video</a>
+                    </div>
+                </div>
+                <div class="project-details">
+                    <h2>Automated Robotic Arm System</h2>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Completed: June 2022</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-tags"></i>
+                            <span>Categories: Robotics, Automation, Control Systems</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-users"></i>
+                            <span>Team Size: 4 members</span>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        <h3>Project Overview</h3>
+                        <p>This project involved designing and building an automated robotic arm capable of precise object manipulation in a manufacturing environment. The system integrates mechanical components, electronic sensors, and control software to achieve high accuracy and repeatability.</p>
+                        
+                        <h3>Key Features</h3>
+                        <ul>
+                            <li>6-axis movement with ±0.1mm precision</li>
+                            <li>Computer vision for object recognition</li>
+                            <li>PLC-based control system</li>
+                            <li>Custom-designed gripper mechanism</li>
+                            <li>Real-time monitoring interface</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-specs">
+                <h3>Technical Specifications</h3>
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <h4>Mechanical</h4>
+                        <ul>
+                            <li>Reach: 800mm</li>
+                            <li>Payload: 2kg</li>
+                            <li>Repeatability: ±0.1mm</li>
+                            <li>Actuators: Stepper motors</li>
+                        </ul>
+                    </div>
+                    <div class="spec-item">
+                        <h4>Electrical</h4>
+                        <ul>
+                            <li>Power: 24V DC</li>
+                            <li>Control: Arduino + PLC</li>
+                            <li>Sensors: Encoders, Force sensors</li>
+                            <li>Vision: Raspberry Pi camera</li>
+                        </ul>
+                    </div>
+                    <div class="spec-item">
+                        <h4>Software</h4>
+                        <ul>
+                            <li>Control: C++</li>
+                            <li>Vision: Python/OpenCV</li>
+                            <li>Interface: Custom GUI</li>
+                            <li>Communication: Modbus TCP</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-gallery">
+                <h3>Project Gallery</h3>
+                <div class="gallery-container">
+                    <div class="gallery-item">
+                        <img src="images/project-detail1.jpg" alt="Project Detail 1">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/project-detail2.jpg" alt="Project Detail 2">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/project-detail3.jpg" alt="Project Detail 3">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/project-detail4.jpg" alt="Project Detail 4">
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-challenges">
+                <h3>Challenges & Solutions</h3>
+                <div class="challenges-accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-btn">Precision Control <i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-content">
+                            <p>Achieving the required precision was challenging due to mechanical backlash. We implemented software compensation algorithms and used higher quality harmonic drives to minimize positional errors.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-btn">Object Recognition <i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-content">
+                            <p>Initial vision system had trouble with reflective surfaces. We added diffuse lighting and implemented edge detection algorithms that were less sensitive to reflections.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-btn">System Integration <i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-content">
+                            <p>Integrating mechanical, electrical and software components required careful timing and synchronization. We developed a state machine architecture that clearly defined system states and transitions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">MyPortfolio</div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="programming.html">P
