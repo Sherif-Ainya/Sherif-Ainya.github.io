@@ -1,292 +1,305 @@
-/* Mechatronics Page Specific Styles */
-.project-hero {
+/* Mechatronics Page Styles */
+.project-header {
+    padding: 150px 0 80px;
+    background: linear-gradient(135deg, #4a077a 0%, #6a0dad 100%);
+    color: white;
     text-align: center;
-    padding: 6rem 0 4rem;
-    background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(231, 76, 60, 0.1) 100%);
-}
-
-.project-hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: var(--dark-color);
-}
-
-.project-hero p {
-    font-size: 1.2rem;
-    color: var(--text-light);
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-/* Project Showcase */
-.project-showcase {
-    padding: 2rem 0;
-}
-
-.project-main {
-    display: flex;
-    gap: 3rem;
-    margin-bottom: 3rem;
-}
-
-.project-image {
-    flex: 1;
     position: relative;
+    overflow: hidden;
 }
 
-.project-image img {
+.project-header:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    border-radius: 8px;
-    box-shadow: var(--shadow);
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 Q50,100 0,0 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+    background-size: cover;
+    opacity: 0.3;
 }
 
-.project-links {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1.5rem;
+.project-header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.project-details {
-    flex: 1;
-}
-
-.project-details h2 {
-    font-size: 2rem;
-    color: var(--dark-color);
-    margin-bottom: 1.5rem;
+.project-header p {
+    font-size: 1.4rem;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    opacity: 0.9;
 }
 
 .project-meta {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
 }
 
 .meta-item {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    color: var(--text-light);
+    gap: 10px;
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    border-radius: 30px;
 }
 
-.meta-item i {
-    color: var(--primary-color);
+/* Project Overview */
+.project-overview {
+    background: white;
+    padding: 80px 0;
 }
 
-.project-description h3 {
-    color: var(--primary-color);
-    margin: 1.5rem 0 1rem;
+.overview-content {
+    display: flex;
+    gap: 50px;
+    align-items: center;
 }
 
-.project-description ul {
-    margin-left: 1.5rem;
-    margin-bottom: 1.5rem;
+.overview-text {
+    flex: 1;
 }
 
-.project-description li {
-    margin-bottom: 0.5rem;
+.overview-text h2 {
+    font-size: 2.5rem;
+    color: var(--primary-dark);
+    margin-bottom: 30px;
     position: relative;
 }
 
-.project-description li::before {
-    content: '•';
-    color: var(--primary-color);
+.overview-text h2:after {
+    content: '';
     position: absolute;
-    left: -1rem;
+    bottom: -10px;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: var(--primary);
 }
 
-/* Project Specifications */
-.project-specs {
-    background-color: var(--white);
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: var(--shadow);
-    margin-bottom: 3rem;
+.overview-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
 }
 
-.project-specs h3 {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: var(--dark-color);
-}
-
-.specs-grid {
+.project-details {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    gap: 30px;
+    margin-top: 40px;
 }
 
-.spec-item {
-    background-color: var(--light-color);
-    padding: 1.5rem;
-    border-radius: 8px;
-}
-
-.spec-item h4 {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid rgba(52, 152, 219, 0.2);
-}
-
-.spec-item ul {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-}
-
-.spec-item li {
-    display: flex;
-    justify-content: space-between;
-}
-
-.spec-item li::before {
-    content: none;
-}
-
-/* Project Gallery */
-.project-gallery {
-    margin-bottom: 3rem;
-}
-
-.project-gallery h3 {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: var(--dark-color);
-}
-
-.gallery-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-}
-
-.gallery-item {
-    height: 200px;
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: var(--shadow);
-    position: relative;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.detail-card {
+    background: var(--secondary);
+    border-left: 4px solid var(--primary);
+    padding: 25px;
+    border-radius: 0 10px 10px 0;
     transition: var(--transition);
 }
 
-.gallery-item:hover img {
+.detail-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.detail-card i {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.detail-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--primary-dark);
+}
+
+.detail-card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.detail-card ul li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.detail-card ul li:before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+}
+
+.overview-image {
+    flex: 1;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.overview-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: var(--transition);
+}
+
+.overview-image:hover img {
     transform: scale(1.05);
 }
 
-/* Challenges Accordion */
-.project-challenges {
-    background-color: var(--white);
-    padding: 2rem;
-    border-radius: 8px;
+/* How It Works */
+.how-it-works {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e7f1 100%);
+    padding: 80px 0;
+}
+
+.work-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    counter-reset: step-counter;
+}
+
+.step {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    position: relative;
+    counter-increment: step-counter;
+    transition: var(--transition);
+}
+
+.step:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(106, 13, 173, 0.2);
+}
+
+.step-number {
+    position: absolute;
+    top: -25px;
+    left: -25px;
+    width: 60px;
+    height: 60px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    box-shadow: 0 5px 15px rgba(106, 13, 173, 0.3);
+}
+
+.step-content h3 {
+    font-size: 1.8rem;
+    color: var(--primary-dark);
+    margin-bottom: 20px;
+}
+
+.step-content p {
+    color: #555;
+    line-height: 1.8;
+}
+
+/* Project PDF */
+.project-pdf {
+    padding: 80px 0;
+    background: white;
+}
+
+.pdf-container {
+    background: var(--secondary);
+    border-radius: 15px;
+    overflow: hidden;
     box-shadow: var(--shadow);
 }
 
-.project-challenges h3 {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: var(--dark-color);
-}
-
-.challenges-accordion {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.accordion-item {
-    margin-bottom: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.accordion-btn {
+.pdf-container iframe {
     width: 100%;
-    padding: 1.2rem 1.5rem;
-    background-color: var(--light-color);
+    height: 600px;
+    display: block;
     border: none;
-    text-align: left;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--dark-color);
-    cursor: pointer;
+}
+
+.pdf-controls {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: var(--transition);
+    justify-content: center;
+    gap: 20px;
+    padding: 25px;
+    background: white;
 }
 
-.accordion-btn:hover {
-    background-color: rgba(52, 152, 219, 0.1);
+/* Project Code */
+.project-code {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #4a077a 0%, #6a0dad 100%);
+    color: white;
 }
 
-.accordion-btn i {
-    transition: var(--transition);
-}
-
-.accordion-btn.active i {
-    transform: rotate(180deg);
-}
-
-.accordion-content {
-    max-height: 0;
+.code-container {
+    background: #1a1a2e;
+    border-radius: 10px;
     overflow: hidden;
-    transition: max-height 0.3s ease;
-    background-color: var(--white);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
-.accordion-content p {
-    padding: 0 1.5rem 1.5rem;
+.code-container pre {
+    margin: 0;
+    padding: 30px;
+    overflow-x: auto;
 }
 
-.accordion-item.active .accordion-content {
-    max-height: 300px;
+.code-container code {
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #f8f9fa;
 }
 
 /* Responsive Design */
 @media (max-width: 992px) {
-    .project-main {
+    .overview-content {
         flex-direction: column;
     }
     
-    .project-image {
-        max-width: 600px;
-        margin: 0 auto;
+    .work-steps {
+        grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 768px) {
-    .project-hero h1 {
-        font-size: 2rem;
+    .project-header h1 {
+        font-size: 2.5rem;
     }
     
-    .project-hero p {
-        font-size: 1rem;
-    }
-    
-    .project-details h2 {
-        font-size: 1.5rem;
+    .project-header p {
+        font-size: 1.1rem;
     }
     
     .project-meta {
         flex-direction: column;
-        gap: 1rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .project-links {
-        flex-direction: column;
+        gap: 15px;
     }
     
-    .gallery-container {
-        grid-template-columns: 1fr;
+    .pdf-controls {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .pdf-controls .btn {
+        width: 100%;
+        text-align: center;
     }
 }

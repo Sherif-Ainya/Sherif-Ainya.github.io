@@ -1,129 +1,61 @@
-// Other Skills page specific JavaScript
-
+// Other Page JavaScript
 document.addEventListener('DOMContentLoaded', function() {
-    // Language card info toggle
-    const infoButtons = document.querySelectorAll('.info-btn');
-    infoButtons.forEach(button => {
+    // Certificate modal functionality
+    const viewButtons = document.querySelectorAll('.view-btn');
+    const modal = document.querySelector('.certificate-modal');
+    const modalImage = document.querySelector('.modal-image');
+    const closeModal = document.querySelector('.close-modal');
+    
+    viewButtons.forEach(button => {
         button.addEventListener('click', function() {
-            const info = this.nextElementSibling;
-            this.classList.toggle('active');
-            info.classList.toggle('active');
+            const certificateCard = this.closest('.certificate-card');
+            const imageSrc = certificateCard.querySelector('img').src;
+            
+            modalImage.src = imageSrc;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         });
     });
     
-    // Testimonial slider
-    let currentTestimonial = 0;
-    const testimonials = document.querySelectorAll('.testimonial-slide');
-    const dots = document.querySelectorAll('.dot');
-    
-    function showTestimonial(index) {
-        testimonials.forEach(testimonial => testimonial.classList.remove('active'));
-        dots.forEach(dot => dot.classList.remove('active'));
-        
-        testimonials[index].classList.add('active');
-        dots[index].classList.add('active');
-        currentTestimonial = index;
-    }
-    
-    // Auto-rotate testimonials
-    let testimonialInterval = setInterval(() => {
-        const nextIndex = (currentTestimonial + 1) % testimonials.length;
-        showTestimonial(nextIndex);
-    }, 5000);
-    
-    // Pause auto-rotation on hover
-    const testimonialSlider = document.querySelector('.testimonial-slider');
-    if (testimonialSlider) {
-        testimonialSlider.addEventListener('mouseenter', () => {
-            clearInterval(testimonialInterval);
-        });
-        
-        testimonialSlider.addEventListener('mouseleave', () => {
-            testimonialInterval = setInterval(() => {
-                const nextIndex = (currentTestimonial + 1) % testimonials.length;
-                showTestimonial(nextIndex);
-            }, 5000);
-        });
-    }
-    
-    // Dot navigation
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            clearInterval(testimonialInterval);
-            showTestimonial(index);
-            
-            // Restart auto-rotation after manual selection
-            testimonialInterval = setInterval(() => {
-                const nextIndex = (currentTestimonial + 1) % testimonials.length;
-                showTestimonial(nextIndex);
-            }, 5000);
-        });
+    // Close modal
+    closeModal.addEventListener('click', function() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
     });
     
-    // Next/prev buttons
-    const nextBtn = document.querySelector('.slider-next');
-    const prevBtn = document.querySelector('.slider-prev');
+    // Close modal when clicking outside
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
     
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            clearInterval(testimonialInterval);
-            const nextIndex = (currentTestimonial + 1) % testimonials.length;
-            showTestimonial(nextIndex);
+    // Animate certificate cards on scroll
+    const animateOnScroll = () => {
+        const cards = document.querySelectorAll('.certificate-card');
+        
+        cards.forEach(card => {
+            const cardPosition = card.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.3;
             
-            testimonialInterval = setInterval(() => {
-                const nextIndex = (currentTestimonial + 1) % testimonials.length;
-                showTestimonial(nextIndex);
-            }, 5000);
-        });
-    }
-    
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-            clearInterval(testimonialInterval);
-            const prevIndex = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
-            showTestimonial(prevIndex);
-            
-            testimonialInterval = setInterval(() => {
-                const nextIndex = (currentTestimonial + 1) % testimonials.length;
-                showTestimonial(nextIndex);
-            }, 5000);
-        });
-    }
-    
-    // Animate skill bars on scroll
-    const skillBars = document.querySelectorAll('.bar-fill');
-    const skillBarObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const width = entry.target.parentElement.previousElementSibling.textContent;
-                entry.target.style.width = width;
-                skillBarObserver.unobserve(entry.target);
+            if (cardPosition < screenPosition) {
+                card.style.opacity = 1;
+                card.style.transform = 'translateY(0)';
             }
         });
-    }, { threshold: 0.5 });
+    };
     
-    skillBars.forEach(bar => {
-        bar.style.width = '0';
-        skillBarObserver.observe(bar);
+    // Set initial state for animated elements
+    document.querySelectorAll('.certificate-card').forEach(card => {
+        card.style.opacity = 0;
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     });
     
-    // Typing animation for statistics
-    const statValues = document.querySelectorAll('.stat-value');
-    statValues.forEach(value => {
-        const target = parseInt(value.textContent);
-        value.textContent = '0';
-        
-        let current = 0;
-        const increment = target / 20;
-        
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                clearInterval(timer);
-                value.textContent = target.toString();
-            } else {
-                value.textContent = Math.floor(current).toString();
-            }
-        }, 50);
-    });
+    // Listen for scroll events
+    window.addEventListener('scroll', animateOnScroll);
+    
+    // Trigger on page load
+    animateOnScroll();
 });

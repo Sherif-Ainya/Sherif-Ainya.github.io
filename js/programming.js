@@ -1,125 +1,61 @@
-// Programming page specific JavaScript
-
+// Programming Page JavaScript
 document.addEventListener('DOMContentLoaded', function() {
     // Certificate filtering
     const filterButtons = document.querySelectorAll('.filter-btn');
     const certificateCards = document.querySelectorAll('.certificate-card');
     
     filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Update active button
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
             filterButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
             
-            const filter = this.getAttribute('data-filter');
+            // Add active class to clicked button
+            button.classList.add('active');
+            
+            const filterValue = button.getAttribute('data-filter');
             
             // Filter certificates
             certificateCards.forEach(card => {
-                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
                     card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = 1;
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
                 } else {
-                    card.style.display = 'none';
+                    card.style.opacity = 0;
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
                 }
             });
         });
     });
     
-    // Certificate modal functionality
-    const certificateImages = document.querySelectorAll('.certificate-img img');
-    const modal = document.createElement('div');
-    modal.classList.add('modal');
-    
-    const modalContent = document.createElement('div');
-    modalContent.classList.add('modal-content');
-    
-    const closeModal = document.createElement('span');
-    closeModal.classList.add('close-modal');
-    closeModal.innerHTML = '&times;';
-    
-    modal.appendChild(modalContent);
-    modal.appendChild(closeModal);
-    document.body.appendChild(modal);
-    
-    certificateImages.forEach(image => {
-        image.addEventListener('click', function() {
-            modalContent.innerHTML = '';
-            const imgClone = this.cloneNode();
-            modalContent.appendChild(imgClone);
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        });
-    });
-    
-    closeModal.addEventListener('click', function() {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    });
-    
-    window.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-    });
-    
-    // Add styles for modal
-    const modalStyles = document.createElement('style');
-    modalStyles.textContent = `
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal-content {
-            max-width: 90%;
-            max-height: 90%;
-        }
-        
-        .modal-content img {
-            max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 40px;
-            cursor: pointer;
-        }
-    `;
-    document.head.appendChild(modalStyles);
-    
-    // Certificate info toggle
-    const infoButtons = document.querySelectorAll('.info-btn');
-    infoButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const info = this.nextElementSibling;
-            this.classList.toggle('active');
-            info.classList.toggle('active');
-        });
-    });
-    
     // Animate certificate cards on scroll
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
+    const animateOnScroll = () => {
+        certificateCards.forEach(card => {
+            const cardPosition = card.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.3;
+            
+            if (cardPosition < screenPosition) {
+                card.style.opacity = 1;
+                card.style.transform = 'translateY(0)';
             }
         });
-    }, { threshold: 0.1 });
+    };
     
+    // Set initial state for animated elements
     certificateCards.forEach(card => {
-        observer.observe(card);
+        card.style.opacity = 0;
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     });
+    
+    // Listen for scroll events
+    window.addEventListener('scroll', animateOnScroll);
+    
+    // Trigger on page load
+    animateOnScroll();
 });
