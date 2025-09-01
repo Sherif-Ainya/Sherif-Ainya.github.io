@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechatronics Projects - Sherif_Ainya</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mechatronics.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Sherif_Ainya</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="programming.html">Programming</a></li>
+                <li><a href="mechatronics.html" class="active">Mechatronics</a></li>
+                <li><a href="other.html">Other</a></li>
+            </ul>
+            <!-- <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div> -->
+        </div>
+    </nav>
+
+    <!-- Project Header -->
+    <section class="project-header">
+        <div class="container">
+            <div class="header-content">
+                <h1>Gesture-Controlled LED System</h1>
+                <p>MPU6050-based hand gesture recognition for lighting control</p>
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-microchip"></i>
+                        <span>Arduino & Sensors</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-code"></i>
+                        <span>C++ Programming</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Embedded Systems</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section class="project-overview">
+        <div class="container">
+            <div class="overview-content">
+                <div class="overview-text">
+                    <h2>Project Overview</h2>
+                    <p>This project demonstrates an innovative way to control an LED using hand gestures. The MPU6050 motion sensor detects hand movements, and the Arduino Uno processes the data to turn the LED on/off or adjust its brightness based on the gestures.</p>
+                    
+                    <div class="project-details">
+                        <div class="detail-card">
+                            <i class="fas fa-cogs"></i>
+                            <h3>Components</h3>
+                            <ul>
+                                <li>Arduino Uno</li>
+                                <li>MPU6050 (Gyroscope + Accelerometer)</li>
+                                <li>LED with Resistor</li>
+                                <li>Breadboard</li>
+                            </ul>
+                        </div>
+                        <div class="detail-card">
+                            <i class="fas fa-wrench"></i>
+                            <h3>Functionality</h3>
+                            <ul>
+                                <li>Tilt detection (X, Y, Z angles)</li>
+                                <li>Acceleration sensing</li>
+                                <li>PWM brightness control</li>
+                                <li>Gesture recognition</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="overview-image">
+                    <img src="images/ump-project.jpg" alt="MPU6050 Project">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="work-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Motion Detection</h3>
+                        <p>The MPU6050 continuously measures orientation (pitch, roll, yaw) and acceleration. Example gestures include tilt left/right to turn LED on/off, and up/down to adjust brightness.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Data Processing</h3>
+                        <p>Arduino reads sensor values and applies thresholds to detect gestures. It uses conditional logic to determine actions based on orientation and movement patterns.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>LED Response</h3>
+                        <p>Digital control for on/off using digitalWrite(), and analog control for brightness using analogWrite() with PWM signals to adjust LED intensity.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project PDF -->
+    <section class="project-pdf">
+        <div class="container">
+            <h2 class="section-title">Project Documentation</h2>
+            <div class="pdf-container">
+                <iframe src="pdfs/mechatronics/MPU-6050-Project.pdf" frameborder="0"></iframe>
+                <div class="pdf-controls">
+                    <a href="pdfs/mechatronics/MPU-6050-Project.pdf" download class="btn">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                    <a href="pdfs/mechatronics/MPU-6050-Project.pdf" target="_blank" class="btn">
+                        <i class="fas fa-external-link-alt"></i> Open in New Tab
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Code -->
+    <section class="project-code">
+        <div class="container">
+            <h2 class="section-title">Project Code</h2>
+            <div class="code-container">
+                <pre><code>#include &lt;Wire.h&gt;
+#include &lt;MPU6050_light.h&gt;
+
+MPU6050 mpu(Wire); // Instantiate an MPU6050 object
+int ledPin = 10; // Pin for the LED (PWM-capable pin)
+float threshold = 0.3; // Gesture threshold
+int ledBrightness = 0; // Start with LED off
+bool ledOn;
+
+void setup() {
+    Serial.begin(9600);
+    Wire.begin();
+    byte status = mpu.begin();
+    Serial.print(F("MPU6050 status: ");
+    Serial.println(status);
+    while(status!=0){} // Stop if connection fails
+
+    Serial.println(F("Calculating offsets, do not move MPU6050"));
+    delay(1000);
+    mpu.calcOffsets(true,true); // gyro and accelero
+    Serial.println("Done\n");
+
+    pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+    mpu.update();
+    float ax = mpu.getAccX();
+    float ay = mpu.getAccY();
+    float az = mpu.getAccZ();
+    float rx = mpu.getAngleX();
+    float ry = mpu.getAngleY();
+    float rz = mpu.getAngleZ();
+
+    float tiltLeftRight = ax; // X-axis value
+
+    // Detect tilt gestures
+    if (tiltLeftRight > threshold) {
+        digitalWrite(ledPin, LOW);
+        ledOn = false;
+    } else if (tiltLeftRight < -threshold) {
+        digitalWrite(ledPin, HIGH);
+        ledOn = true;
+    }
+    
+    if (ledOn) {
+        ledBrightness = map(rz, -90, 90, 0, 255);
+        analogWrite(ledPin, ledBrightness);
+    }
+    
+    delay(100); // Debounce delay
+}</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Sherif_Ainya</h3>
+                    <p>Mechatronics Engineer & Developer</p>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Me</h4>
+                    <a href="https://t.me/sherif_ainya" target="_blank">
+                        <i class="fab fa-telegram"></i> Telegram
+                    </a>
+                    <a href="https://www.linkedin.com/in/Sherif Ainya/" target="_blank">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Sherif_Ainya. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/mechatronics.js"></script>
+</body>
+</html>
